@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurando um software?</title>
+    <style>
+        h1 {
+            font-family: monospace;
+            font-size: 2.5em;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+            animation: slideDown 2s ease; /* Adiciona animação */
+        }
+        p {
+            font-family: monospace;
+            color: #ffffff; /* Altera a cor do texto para branco */
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .bg-image {
+            background-image: url('imgens//img.png'); /* Substitua pelo caminho da sua imagem */
+            background-size: cover; /* Faz a imagem cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            height: 200vh; /* Altura da tela inteira */
+            position: relative; /* Para posicionar elementos sobre a imagem */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Preto semi-transparente */
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            align-items: center; /* Centraliza o conteúdo verticalmente */
+            flex-direction: column; /* Organiza os itens em coluna */
+            padding: 20px;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-50px); /* Começa acima */
+                opacity: 0; /* Invisível no início */
+            }
+            100% {
+                transform: translateY(0); /* Fica na posição original */
+                opacity: 1; /* Totalmente visível */
+            }
+        }
+        label {
+            font-family: monospace;
+            display: block;
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+        input[type="text"] {
+            width: calc(80% - 10px);
+            padding: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #4c00ff;
+            background-color: #252525;
+            color: #fff;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 50%;
+            padding: 10px;
+            background-color: #4319a4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #220e55;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image">
+        <div class="overlay">
+            <h1>Procurando um software?</h1>
+            <p>Estou me aprimorando no processo de desenvolvimento de software e, assim, estou ingressando<br> no mercado com preços competitivos, variando de R$ 100 a R$ 300, de acordo com a complexidade do projeto.</p>
+            
+            <label for="name">Nome:</label>
+            <input type="text" id="name" placeholder="Digite seu nome" required>
+
+            <label for="phone">Telefone:</label>
+            <input type="text" id="phone" placeholder="Digite seu telefone" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Digite seu email" required>
+
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" placeholder="Digite a descrição" required>
+
+            <button onclick="sendWhatsApp()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const description = document.getElementById('description').value;
+
+            const message = `*Novo Pedido*\n\nNome: ${name}\nTelefone: ${phone}\nEmail: ${email}\nDescrição: ${description}`;
+            const whatsappUrl = `https://wa.me/553193395119?text=${encodeURIComponent(message)}`; // Substitua pelo seu número
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
